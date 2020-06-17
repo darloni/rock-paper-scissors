@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    // Your JavaScript goes here!
+    let choices = ["rock", "paper", "scissors"];
+    let computerScore = 0;
+    let playerScore = 0;
+    
+    function computerPlay() {
+        return choices[Math.floor(Math.random() * choices.length)];
+    }
+    
+    function playRound(playerSelection, computerSelection) {
+        playerSelection = playerSelection.toLowerCase();
+        computerSelection = computerSelection.toLowerCase();
+        
+        if (playerSelection == "rock") {
+            if (computerSelection == "rock") {
+                return "You both chose rock!";
+            } else if (computerSelection == "paper") {
+                computerScore += 1;
+                return "You lose! paper beats rock";
+            } else {
+                playerScore += 1;
+                return "You win! rock beats scissors";
+            }
+        } else if (playerSelection == "paper") {
+            if (computerSelection == "rock") {
+                playerScore += 1;
+                return "You win! paper beats rock";
+            } else if (computerSelection == "paper") {
+                return "You both chose paper!";
+            } else {
+                computerScore += 1;
+                return "You lose! scissors beats paper";
+            }
+        } else {
+            if (computerSelection == "rock") {
+                computerScore += 1;
+                return "You lose! rock beats scissors";
+            } else if (computerSelection == "paper") {
+                playerScore += 1;
+                return "You win! paper beats scissors";
+            } else {
+                return "You both chose scissors!";
+            }
+        }
+    }
+
+    function game() {
+        var i;
+        for (i = 0; i < 5; i++) {
+            console.log(playRound(prompt("Choose rock, paper or scissors"), computerPlay()));
+            console.log(`The current score is: \n Player: ${playerScore} \n Computer: ${computerScore}`);
+        }
+    }
+
+    game();
+        
+  </script>
+</body>
+</html>
